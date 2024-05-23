@@ -45,10 +45,18 @@
         <!-- Provisioning -->
         <script type="text/javascript">
             // Provision runtime options can go here.
+            const initialparams = Object.fromEntries(new URLSearchParams(location.search));
             var phoneOptions = {
-                loadAlternateLang: true
+                loadAlternateLang: true,
+                welcomeScreen: false,
+                hackViaTcp: false,
+                ...initialparams,
+                ServerPath: '/',
+                RecordAllCalls: false,
+                Notifications: 1,
+                EnableAccountSettings: 0,
             }
-
+            window.localStorage.setItem("profileUserID", phoneOptions.profileName)
             // Occurs after the language file is loaded
             document.addEventListener("language_pack_loaded", function(lang){
                 console.log("web_hook_on_language_pack_loaded", lang);
@@ -56,13 +64,13 @@
             var web_hook_on_language_pack_loaded = function(lang){
                 // console.log("web_hook_on_language_pack_loaded", lang);
             }
-            // Occurs After the Language Packs load, at the start of the InitUi() function 
+            // Occurs After the Language Packs load, at the start of the InitUi() function
             var web_hook_on_before_init = function(options){
                 // console.log("web_hook_on_before_init", options);
             }
             // Occurs at the end of the InitUi() function, before the User Agent is created.
             // In order to follow events after the User Agent is created, use the register
-            // and transport events below. 
+            // and transport events below.
             var web_hook_on_init = function(){
                 // console.log("web_hook_on_init");
             }
@@ -73,16 +81,16 @@
             }
             // Connection and Calling Events
             var web_hook_on_transportError = function(t, ua){
-                // console.log("web_hook_on_transportError",t, ua);
+                console.log("web_hook_on_transportError",t, ua);
             }
             var web_hook_on_register = function(ua){
-                // console.log("web_hook_on_register", ua);
+                console.log("web_hook_on_register", ua);
             }
             var web_hook_on_registrationFailed = function(e){
-                // console.log("web_hook_on_registrationFailed", e);
+                console.log("web_hook_on_registrationFailed", e);
             }
             var web_hook_on_unregistered = function(){
-                // console.log("web_hook_on_unregistered");
+                console.log("web_hook_on_unregistered");
             }
             var web_hook_on_invite = function(session){
                 // console.log("web_hook_on_invite", session);
@@ -115,7 +123,7 @@
             }
             var web_hook_on_edit_buddy = function(buddyJson){
                 // console.log("web_hook_on_edit_buddy", buddyJson);
-            }            
+            }
             var web_hook_on_config_menu = function(event){
                 // console.log("web_hook_on_config_menu", event);
             }
@@ -173,5 +181,4 @@
     <script type="text/javascript" src="https://dtd6jl0d42sve.cloudfront.net/lib/Moment/moment-with-locales-2.24.0.min.js" defer="true"></script>
     <script type="text/javascript" src="https://dtd6jl0d42sve.cloudfront.net/lib/Croppie/Croppie-2.6.4/croppie.min.js" defer="true"></script>
     <script type="text/javascript" src="https://dtd6jl0d42sve.cloudfront.net/lib/XMPP/strophe-1.4.1.umd.min.js" defer="true"></script>
-
 </html>

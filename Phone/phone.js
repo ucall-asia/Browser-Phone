@@ -223,19 +223,19 @@ let userAgent = null;
 let CanvasCollection = [];
 let Buddies = [];
 let selectedBuddy = null;
-let selectedLine = null;
+var selectedLine = null;
 let windowObj = null;
 let alertObj = null;
 let confirmObj = null;
 let promptObj = null;
 let menuObj = null;
 let HasVideoDevice = false;
-let HasAudioDevice = false;
+var HasAudioDevice = false;
 let HasSpeakerDevice = false;
 let AudioinputDevices = [];
 let VideoinputDevices = [];
 let SpeakerDevices = [];
-let Lines = [];
+var Lines = [];
 let lang = {}
 let audioBlobs = {}
 let newLineNumber = 1;
@@ -1732,7 +1732,7 @@ function InitUi(){
     UpdateUI();
 
     // Show Welcome Screen
-    if(welcomeScreen){
+    if(false){
         if(localDB.getItem("WelcomeScreenAccept") != "yes"){
             OpenWindow(welcomeScreen, lang.welcome, 480, 600, true, false, lang.accept, function(){
                 localDB.setItem("WelcomeScreenAccept", "yes");
