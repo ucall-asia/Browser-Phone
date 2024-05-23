@@ -17,16 +17,6 @@
         <meta name="theme-color" media="(prefers-color-scheme: dark)"  content="#292929">
         <link rel="apple-touch-icon" type="image/png" href="icons/512.png">
         <link rel="manifest" type="application/manifest+json" href="manifest.json">
-        <script type="text/javascript">
-            // If you don't want to use a service worker, you can just take this code out.
-            if ('serviceWorker' in navigator) {
-                navigator.serviceWorker.register("sw.js").catch(function(error) {
-                    console.error('Service Worker Error', error);
-                });
-            } else {
-                console.warn("Cannot make use of ServiceWorker");
-            }
-        </script>
 
         <!-- Cache -->
         <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate"/>
