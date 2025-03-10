@@ -2692,6 +2692,12 @@ function AnswerAudioCall(lineNumber) {
         return;
     }
     var session = lineObj.SipSession;
+
+    // Update 11/3/2025: A weird race condition that accepting the call twice
+    if (session._state !== "Initial") {
+        return;
+    }
+
     // Stop the ringtone
     if(session.data.ringerObj){
         session.data.ringerObj.pause();
